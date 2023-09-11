@@ -1,0 +1,118 @@
+﻿@model OTPSettings.Models.CheckboxDataModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script type="text/javascript">
+    function selectAllEmailCheckboxes() {
+        var ele = document.getElementById('checklistall1');
+        var emailCheckboxes = document.querySelectorAll('input.email');
+
+        if (ele.checked == true) {
+            emailCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = true;
+            });
+        } else {
+            deSelectAll();
+        }
+    }
+
+    function deSelectAll() {
+        var ele = document.getElementById('checklistall1');
+        if (ele.checked == false) {
+            var emailCheckboxes = document.querySelectorAll('input.email');
+            emailCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        }
+    }
+
+    function selectAllWaCheckboxes() {
+        var ele = document.getElementById('checlistall2');
+        var waCheckboxes = document.querySelectorAll('input.wa');
+
+        if (ele.checked == true) {
+            waCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = true;
+            });
+        } else {
+            deSelectAllWa();
+        }
+    }
+
+    function deSelectAllWa() {
+        var ele = document.getElementById('checlistall2');
+        if (ele.checked == false) {
+            var waCheckboxes = document.querySelectorAll('input.wa');
+            waCheckboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        }
+    }
+</script>
+
+
+
+<form method="post" action="@Url.Action("ClickMe", "Home")">
+    <table style="border: 1px solid black; margin-left: auto; margin-right: auto;">
+        <div class="text-center">
+            <h1 class="display-4">OTP Setting</h1>
+        </div>
+
+        <tr>
+            <th>Action</th>
+            <th>Channel Type</th>
+        </tr>
+        <tr>
+            <td>
+                <label for="checklistall1"> ChecklistAll</label><br>
+            </td>
+            <td>
+                <input type="checkbox" id="checklistall1" name="CheckboxData.Email" value="true" onclick="selectAllEmailCheckboxes();">
+                <label for="checklistall1"> Email</label>
+            </td>
+            <td>
+                <input type="checkbox" id="checlistall2" name="CheckboxData.Whatsapp" value="true" onclick="selectAllWaCheckboxes();">
+                <label for="checlistall2">Whatsapp</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="wd1"> Withdrawl</label><br>
+            </td>
+            <td>
+                <input type="checkbox" id="wd1" name="CheckboxData.Withdrawl" class="email" value="true">
+            </td>
+            <td>
+                <input type="checkbox" id="wd2" name="CheckboxData.WithdrawlWA" class="wa" value="true">
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <label for="frgtPwd"> Forgot Password</label><br>
+            </td>
+            <td>
+                <input type="checkbox" id="frgtPwd" name="CheckboxData.ForgotPassword" class="email" value="true">
+            </td>
+            <td>
+                <input type="checkbox" id="frgtPwd1" name="CheckboxData.ForgotPasswordWA" class = "wa"value="true">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="rstpwd"> Reset Password</label><br>
+            </td>
+            <td>
+                <input type="checkbox" id="rstpwd" name="CheckboxData.ResetPassword" class="email" value="true">
+            </td>
+            <td>
+                <input type="checkbox" id="rstpwd1" name="CheckboxData.ResetPassword" class="wa" value="true">
+            </td>
+        </tr>
+    </table>
+    <div class="text-center" style="margin-top: 20px;">
+        <input type="submit" class="btn btn-primary" value="Click">
+
+    </div>
+</form>
