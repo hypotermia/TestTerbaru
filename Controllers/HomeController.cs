@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Microsoft.AspNetCore.Mvc;
 using OTPSettings.Models;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
@@ -63,24 +64,28 @@ namespace OTPSettings.Controllers
                 resetPasswordChecked = model.ResetPassword;
                 resetPasswordwaChecked = model.ResetPasswordWA;
             }
-            
+
             string sp_update = "UpdateOTP";
-            var parameters = new
+            var parameters = new DynamicParameters(); // Using Dapper's DynamicParameters to create parameterized queries
+
+            // Add parameters to the DynamicParameters object
+            parameters.Add("id", Guid.NewGuid(), DbType.Guid);
+            parameters.Add("checklsitAllWa", whatsappChecked, DbType.Boolean);
+            parameters.Add("checklistAllEmail", emailChecked, DbType.Boolean);
+            parameters.Add("withdrawlWa", withdrawlwaChecked, DbType.Boolean);
+            parameters.Add("withdrawlEmail", withdrawlChecked, DbType.Boolean);
+            parameters.Add("ForgotPasswordWa", forgotPasswordwaChecked, DbType.Boolean);
+            parameters.Add("ForgotPasswordEmail", forgotPasswordChecked, DbType.Boolean);
+            parameters.Add("ResetPasswordWa", resetPasswordwaChecked, DbType.Boolean);
+            parameters.Add("ResetPassword", resetPasswordChecked, DbType.Boolean);
+
+            using (var connection = new SqlConnection(connString))
             {
-                id = Guid.NewGuid(),
-                checklistAllWa = whatsappChecked,
-                checklistAllEmail = emailChecked,
-                withdrawlWa = withdrawlwaChecked,
-                withdrawlEmail = withdrawlChecked,
-                ForgotPasswordWa = forgotPasswordwaChecked,
-                ForgotPasswordEmail = forgotPasswordChecked,
-                ResetPasswordWa = resetPasswordwaChecked,
-                ResetPassword = resetPasswordChecked
-            };
-            using(var connection = new SqlConnection(connString))
-            {
-                var insert = connection.Execute(sp_update, parameters);
+                connection.Open();
+                var result = connection.Execute(sp_update, parameters, commandType: CommandType.StoredProcedure);
+                
             }
+
             return RedirectToAction("Index");
         }
 

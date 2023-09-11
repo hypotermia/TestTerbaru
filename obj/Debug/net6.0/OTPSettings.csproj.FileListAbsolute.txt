@@ -29,3 +29,11 @@ E:\LearnProject\OTPSettings\obj\Debug\net6.0\refint\OTPSettings.dll
 E:\LearnProject\OTPSettings\obj\Debug\net6.0\OTPSettings.pdb
 E:\LearnProject\OTPSettings\obj\Debug\net6.0\OTPSettings.genruntimeconfig.cache
 E:\LearnProject\OTPSettings\obj\Debug\net6.0\ref\OTPSettings.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\Dapper.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\System.Data.SqlClient.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\LearnProject\OTPSettings\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\LearnProject\OTPSettings\obj\Debug\net6.0\OTPSettings.csproj.CopyComplete
